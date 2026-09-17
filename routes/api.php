@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/status', function () {
@@ -9,3 +10,7 @@ Route::get('/status', function () {
         'framework' => 'Laravel'
     ]);
 });
+
+Route::get('/tickets/{ticket}', [TicketController::class, 'showJson'])
+    ->whereNumber('ticket')
+    ->name('tickets.show-json');
